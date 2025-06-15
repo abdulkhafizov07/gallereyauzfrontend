@@ -1,5 +1,14 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Salom dunyo!"
+  },
+  "navbar": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "categories": "Bo'limlar",
+    "rating": "Reyting",
+    "contact": "Aloqa",
+    "login": "Kirish",
+    "logout": "Chiqish"
   }
 }

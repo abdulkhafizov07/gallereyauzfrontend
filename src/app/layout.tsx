@@ -5,7 +5,8 @@ import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme";
 import { ImagesProvider } from "@/context/images";
-import Script from "next/script";
+import { NavbarComponent } from "@/components/web/navbar";
+import Cursor from "@/components/web/cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,11 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <ThemeProvider>
-            <ImagesProvider>{children}</ImagesProvider>
+            <ImagesProvider>
+              <Cursor />
+              <NavbarComponent />
+              {children}
+            </ImagesProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

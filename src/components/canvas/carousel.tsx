@@ -90,20 +90,8 @@ const Carousel3D: React.FC = () => {
 
     dragEl.addEventListener("pointerdown", onPointerDown);
 
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      currentRadius += e.deltaY / 20;
-      items.forEach((item, i) => {
-        const angle = (360 / items.length) * i;
-        item.style.transform = `rotateY(${angle}deg) translateZ(${currentRadius}px)`;
-      });
-    };
-
-    document.addEventListener("wheel", onWheel, { passive: false });
-
     return () => {
       dragEl.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("wheel", onWheel);
       cancelAnimationFrame(rafId.current!);
     };
   }, []);
