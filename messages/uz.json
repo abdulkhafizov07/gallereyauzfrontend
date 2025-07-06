@@ -10,5 +10,8 @@
     "contact": "Aloqa",
     "login": "Kirish",
     "logout": "Chiqish"
+  },
+  "hero": {
+    "open image": "Rasmni ochish"
   }
 }

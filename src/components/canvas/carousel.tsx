@@ -1,17 +1,15 @@
 "use client";
 
+import { useImagesContext } from "@/context/images";
 import React, { useEffect, useRef } from "react";
-
-const images = [
-  "/uploads/image0.png",
-  "/uploads/image1.png",
-  "/uploads/image2.png",
-  "/uploads/image0.png",
-  "/uploads/image1.png",
-  "/uploads/image2.png",
-];
+import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 const Carousel3D: React.FC = () => {
+  const { introImages } = useImagesContext();
+  const t = useTranslations("hero");
+
   const dragRef = useRef<HTMLDivElement>(null);
   const spinRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +18,6 @@ const Carousel3D: React.FC = () => {
   const rotateSpeed = -60;
 
   const tX = useRef(0);
-  const tY = useRef(10);
   const desX = useRef(0);
   const rafId = useRef<number>(0);
 
@@ -94,7 +91,7 @@ const Carousel3D: React.FC = () => {
       dragEl.removeEventListener("pointerdown", onPointerDown);
       cancelAnimationFrame(rafId.current!);
     };
-  }, []);
+  }, [introImages]);
 
   return (
     <div className="w-full h-[500px] flex items-center justify-center perspective-[1000px]">
@@ -113,14 +110,29 @@ const Carousel3D: React.FC = () => {
             transformStyle: "preserve-3d",
           }}
         >
-          {images.map((src, i) => (
-            <div key={i} className="absolute select-none" data-type="image">
+          {introImages.map((image, i) => (
+            <div
+              key={i}
+              className="absolute group select-none shadow-lg shadow-gray-800/15 dark:shadow-gray-500/15 overflow-hidden rounded-lg"
+              data-type="image"
+            >
               <div className="aspect-[9/13] w-[210px]">
-                <img
-                  src={src}
-                  alt={`img-${i}`}
+                <Image
+                  src={image.image}
+                  alt={image.name}
                   className="w-full h-full object-cover"
+                  width={1366}
+                  height={786}
                 />
+              </div>
+
+              <div className="absolute w-full h-auto p-3 bg-white/60 dark:bg-black/60 backdrop-blur-xl top-full group-hover:-translate-y-full transition-all duration-200 ease-in">
+                <h1 className="text-xl font-semibold">{image.name}</h1>
+                <p className="mb-2 text-sm">{image.short_description}</p>
+
+                <Button asChild size="sm" className="w-full">
+                  <a href={`/images/${image.guid}/`}>{t("open image")}</a>
+                </Button>
               </div>
             </div>
           ))}

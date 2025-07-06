@@ -11,5 +11,6 @@ interface ImageType {
 
 interface ImagesContextType {
   introImages: ImageType[];
+  digitalImages: ImageType[];
   imagesLoading: boolean;
 }

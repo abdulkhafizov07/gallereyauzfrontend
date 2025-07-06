@@ -3,10 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 
 import "./globals.css";
+import "swiper/css";
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
 import { ThemeProvider } from "@/context/theme";
 import { ImagesProvider } from "@/context/images";
 import { NavbarComponent } from "@/components/web/navbar";
-import Cursor from "@/components/web/cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,13 +37,15 @@ export default async function RootLayout({
 
   return (
     <html lang={locale || "uz"}>
+      <head>
+        <link rel="stylesheet" href="/fonts/WhyteInktrap/stylesheet.css" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         <NextIntlClientProvider>
           <ThemeProvider>
             <ImagesProvider>
-              <Cursor />
               <NavbarComponent />
               {children}
             </ImagesProvider>
