@@ -8,6 +8,7 @@ import { useThemeContext } from "@/hooks/theme";
 import { useImagesContext } from "@/context/images";
 import Image from "next/image";
 
+// Home page
 export default function Page() {
   const { isDark } = useThemeContext();
   const { digitalImages } = useImagesContext();
