@@ -5,6 +5,7 @@ interface ImageType {
   description: string;
   image: string;
   tags: string[];
+  likes?: number;
   created_at: string;
   updated_at: string;
 }

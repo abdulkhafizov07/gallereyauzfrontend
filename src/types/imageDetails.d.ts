@@ -1,0 +1,3 @@
+type ImageDetailsComponentProps = {
+  data: ImageType;
+};

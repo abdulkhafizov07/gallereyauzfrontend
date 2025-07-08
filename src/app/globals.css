@@ -157,3 +157,10 @@
   box-shadow: 0 var(--spacing) calc(var(--spacing) * 1.5) var(--color-primary) !important;
   transform: none !important;
 }
+
+@media print {
+  html,
+  body {
+    display: none;
+  }
+}

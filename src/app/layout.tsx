@@ -4,8 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 
 import "./globals.css";
 import "swiper/css";
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
 import { ThemeProvider } from "@/context/theme";
 import { ImagesProvider } from "@/context/images";
@@ -40,9 +40,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale || "uz"}>
-      <head>
-        <link rel="stylesheet" href="/fonts/WhyteInktrap/stylesheet.css" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
